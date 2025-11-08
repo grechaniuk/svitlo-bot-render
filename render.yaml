@@ -1,0 +1,21 @@
+services:
+  - type: worker
+    name: svitlo-ai-bot
+    env: python
+    plan: starter
+    region: frankfurt
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python bot.py"
+    autoDeploy: true
+    healthCheckPath: null
+    envVars:
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: DEFAULT_LANG
+        value: en
+      - key: DEFAULT_COUNTRY
+        value: US
+      - key: ADMINS
+        value: ""
